@@ -1,0 +1,35 @@
+1/ Install Ganache CLI
+npm install -g ganache-cli
+2/ 
+sudo npm install -g truffle
+3/ install angular cli
+npm uninstall -g @angular/cli
+ng serve --host 0.0.0.0 --base-href=/MerateChain/
+npm cache verify
+
+4/ mkdir project-name
+5/ truffle init
+truffle compile
+truffle migrate --network development --reset
+truffle console --network development
+
+
+
+
+
+
+web3.eth.accounts
+
+account0 = web3.eth.accounts[0]    ==>  '0x07a052d494ea5333fe41aeb4221c3bcfa10ab865'
+account1 = web3.eth.accounts[1]    ==>  '0xa171fabe640df7b7239e32c697f4123aa7b77c99'
+
+Get our contract ABI (Application Binary Interface) and store it in a variable
+
+> var app
+> HelloWorld.deployed().then(function(instance) { app = instance; })
+
+Now we can use app to interact with the contract (note that contract storage must be declared public for this to work, i.e. address public creator).
+
+> app.creator.call()
+
+ app.functionName.call().then(function(result){ console.log(result);})

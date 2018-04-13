@@ -1,0 +1,58 @@
+Private chain on Ethereum 
+(https://souptacular.gitbooks.io/ethereum-tutorials-and-tips-by-hudson/content/private-chain.html)
+(https://mlgblockchain.com/ethereum-private-network.html)
+	-  	Custom Genesis File
+	-  	Custom Data Directory
+	-  	Custom NetworkID
+	-  	(Recommended) Disable Node Discovery
+	
+1/  Step:
+	-	mkdir geth && cd geth
+	-	mkdir privchain
+	-	touch genesis.json	
+			
+			{
+				"config": {
+				"chainId": 9999,
+				"homesteadBlock": 0,
+				"eip155Block": 0,
+				"eip158Block": 0
+				},
+				"difficulty": "1000000",
+				"gasLimit": "1000000",
+				"alloc": { "0xc71601c4eacfd40beab4f097fdb4b523a13bdf3d": { "balance": "10000000000000000000" } }
+			}
+	
+	-	geth --datadir /home/vagrant/blockchain-network/ init genesis.json
+	-	geth --port 3000 --networkid 9999 --nodiscover --datadir /home/vagrant/blockchain-network/ --maxpeers=0 --rpc --rpcport 8545 --rpcaddr 0.0.0.0 --rpccorsdomain "*" --rpcapi "eth,net,web3,miner"
+	-	Get IPC Information from Console window
+		IPC endpoint opened   url=/home/vagrant/blockchain-network/geth.ipc
+	-	geth attach ipc://home/vagrant/blockchain-network/geth.ipc
+	-	create an account to use
+		personal.newAccount('password')
+	-	verify in console
+		personal.listAccounts
+		web3.eth.coinbase
+	-   unclock account to deploy smartcontract
+		personal.unlockAccount(web3.eth.coinbase, "password", 15000)
+	or	web3.personal.unlockAccount(web3.personal.listAccounts[0])  ==>  password is password
+	-	Start miner in geth console
+		miner.start()
+	-	Get balance
+		web3.eth.getBalance(personal.listAccounts[0])
+		web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+	-	Get latest block gasLimit
+		web3.eth.getBlock('latest').gasLimit
+	-	Get pending block
+		web3.eth.getBlock('pending', true)
+		eth.getBlock("pending")
+	-   Utility
+		eth.blockNumber
+		eth.coinbase
+		eth.getBlock(0).difficulty
+		eth.getBlock(0).transactions
+		
+		
+Error:
+	Remove .ethash
+	Remove .ethereum

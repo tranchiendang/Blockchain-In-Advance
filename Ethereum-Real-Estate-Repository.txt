@@ -1,0 +1,28 @@
+https://github.com/fgirmay/MerateChain
+https://github.com/alexisgauba/Tabula
+
+
+
+https://tools.ietf.org/html/rfc7519
+
+virtualchain
+sidechain
+
+
+
+Ethereum, Hyperledger, Corda, Chain
+
+Tendermint
+
+
+ PKI, AES, SHA derivatives, KMS, Merkle trees
+ 
+  POW, Raft, POeT,  Paxos, DPOS, POV
+  
+  Intel SGX
+  
+  
+  Ethereum Whisper protocol
+  
+  
+  http://herongyang.com/Ethereum/index.html
